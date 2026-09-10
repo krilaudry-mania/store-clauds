@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Panel | CLAUD'S STORE</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/png" href="https://i.imgur.com/mVG06zb.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+
+<!-- ================= LAYAR LOGIN ================= -->
+<div class="layar-login" id="layar-login">
+  <form class="kartu-login" id="form-login">
+    <img src="https://i.imgur.com/mVG06zb.png" alt="Logo Claud's Store" />
+    <h1>CLAUD'S STORE</h1>
+    <p class="sub">Masuk ke Admin Panel</p>
+
+    <div class="field-group">
+      <label for="input-email-login">Email</label>
+      <input type="email" id="input-email-login" placeholder="admin@claudsstore.com" required autocomplete="username" />
+    </div>
+    <div class="field-group">
+      <label for="input-password-login">Kata Sandi</label>
+      <input type="password" id="input-password-login" placeholder="Masukkan kata sandi" required autocomplete="current-password" />
+    </div>
+
+    <button type="submit" class="btn-primer">Masuk</button>
+    <p class="pesan-error" id="pesan-error-login"></p>
+  </form>
+</div>
+
+<!-- ================= ADMIN SHELL ================= -->
+<div class="admin-shell" id="admin-shell">
+
+  <div class="admin-overlay-sidebar" id="admin-overlay-sidebar"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="admin-sidebar__brand">
+      <img src="https://i.imgur.com/mVG06zb.png" alt="Logo" />
+      <div>
+        <strong>CLAUD'S STORE</strong>
+        <span>ADMIN PANEL</span>
+      </div>
+    </div>
+
+    <ul class="admin-nav">
+      <li class="admin-nav__item admin-nav__item--aktif" data-tab="dashboard" data-label="Dashboard">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+        Dashboard
+      </li>
+      <li class="admin-nav__item" data-tab="produk" data-label="Manajemen Produk">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg>
+        Manajemen Produk
+      </li>
+      <li class="admin-nav__item" data-tab="kasbon" data-label="Kasbon / Hutang">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 9h1M9 13h6M9 17h6"/></svg>
+        Kasbon / Hutang
+      </li>
+      <li class="admin-nav__item" data-tab="faq" data-label="Bot &amp; FAQ">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Bot &amp; FAQ
+      </li>
+      <li class="admin-nav__item" data-tab="settings" data-label="Pengaturan Toko">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+        Pengaturan Toko
+      </li>
+    </ul>
+
+    <button type="button" class="admin-sidebar__logout" id="btn-logout">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+      Keluar
+    </button>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <button type="button" class="btn-buka-sidebar" id="btn-buka-sidebar" aria-label="Buka menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <span class="admin-topbar__judul" id="admin-topbar-judul">Dashboard</span>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- ===== TAB: DASHBOARD ===== -->
+      <section class="tab-konten" id="tab-dashboard">
+        <div class="grid-statistik">
+          <div class="kartu-statistik">
+            <div class="kartu-statistik__ikon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+            <div><p class="kartu-statistik__label">Total Pendapatan</p><p class="kartu-statistik__nilai" id="stat-total-pendapatan">LKR 0</p></div>
+          </div>
+          <div class="kartu-statistik">
+            <div class="kartu-statistik__ikon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+            <div><p class="kartu-statistik__label">Laba Bersih</p><p class="kartu-statistik__nilai" id="stat-laba-bersih">LKR 0</p></div>
+          </div>
+          <div class="kartu-statistik">
+            <div class="kartu-statistik__ikon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <div><p class="kartu-statistik__label">Total Kasbon / Hutang</p><p class="kartu-statistik__nilai" id="stat-total-kasbon">LKR 0</p></div>
+          </div>
+          <div class="kartu-statistik">
+            <div class="kartu-statistik__ikon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg></div>
+            <div><p class="kartu-statistik__label">Stok Produk</p><p class="kartu-statistik__nilai" id="stat-total-stok">0 Item</p></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header"><h2>Analisis Laba / Rugi</h2></div>
+          <div class="panel-analitik">
+            <div class="kotak-analitik">
+              <p class="kotak-analitik__label">Saldo Tunai Terkumpul</p>
+              <p class="kotak-analitik__nilai" id="analitik-saldo-tunai">LKR 0</p>
+            </div>
+            <div class="kotak-analitik">
+              <p class="kotak-analitik__label">Total Piutang / Hutang Belum Dibayar</p>
+              <p class="kotak-analitik__nilai" id="analitik-piutang">LKR 0</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB: PRODUK ===== -->
+      <section class="tab-konten" id="tab-produk" style="display:none;">
+        <div class="panel">
+          <div class="panel__header">
+            <h2>Data Produk / Inventori</h2>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <input type="text" class="input-cari-tabel" id="input-cari-produk" placeholder="Cari nama produk..." />
+              <button type="button" class="btn-aksi" id="btn-tambah-produk">+ Tambah Produk</button>
+            </div>
+          </div>
+          <div class="tabel-wrap">
+            <table class="tabel-admin">
+              <thead>
+                <tr>
+                  <th>No</th><th>Gambar</th><th>Nama Produk</th><th>Kategori</th><th>Stok</th><th>Harga Modal</th><th>Harga Jual</th><th>Status</th><th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-produk"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB: KASBON ===== -->
+      <section class="tab-konten" id="tab-kasbon" style="display:none;">
+        <div class="panel">
+          <div class="panel__header"><h2>Manajemen Kasbon / Hutang</h2></div>
+          <div class="tabel-wrap">
+            <table class="tabel-admin">
+              <thead><tr><th>Nama Pelanggan</th><th>Jumlah</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead>
+              <tbody id="tbody-kasbon"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB: FAQ ===== -->
+      <section class="tab-konten" id="tab-faq" style="display:none;">
+        <div class="panel">
+          <div class="panel__header">
+            <h2>Manajemen FAQ &amp; Bot</h2>
+            <button type="button" class="btn-aksi" id="btn-tambah-faq">+ Tambah FAQ</button>
+          </div>
+          <div class="tabel-wrap">
+            <table class="tabel-admin">
+              <thead><tr><th>Pertanyaan</th><th>Jawaban</th><th>Aksi</th></tr></thead>
+              <tbody id="tbody-faq"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB: PENGATURAN TOKO ===== -->
+      <section class="tab-konten" id="tab-settings" style="display:none;">
+        <form class="panel" id="form-settings">
+          <div class="panel__header"><h2>Pengaturan Toko</h2></div>
+
+          <div class="field-group">
+            <label>Logo Toko</label>
+            <img id="preview-logo-toko" class="preview-gambar" src="https://i.imgur.com/mVG06zb.png" alt="Preview logo" />
+            <input type="file" id="input-logo-toko-upload" accept="image/*" />
+          </div>
+
+          <div class="field-group">
+            <label for="input-nama-toko-settings">Nama Toko</label>
+            <input type="text" id="input-nama-toko-settings" required />
+          </div>
+
+          <div class="field-group">
+            <label for="input-kurs-settings">Kurs LKR ke IDR (1 LKR = ... IDR)</label>
+            <input type="number" step="0.01" id="input-kurs-settings" required />
+          </div>
+
+          <div class="field-group">
+            <label for="input-whatsapp-settings">Nomor WhatsApp Admin</label>
+            <input type="text" id="input-whatsapp-settings" placeholder="6281334331776" required />
+          </div>
+
+          <div class="field-group">
+            <label for="input-telegram-settings">Username Telegram Admin</label>
+            <input type="text" id="input-telegram-settings" placeholder="@username" required />
+          </div>
+
+          <button type="submit" class="btn-primer">Simpan Pengaturan</button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- ================= MODAL: TAMBAH/UBAH PRODUK ================= -->
+<div class="overlay-form-modal" id="overlay-modal-produk">
+  <div class="kartu-form-modal">
+    <div class="kartu-form-modal__header">
+      <h2 id="judul-modal-produk">Tambah Produk</h2>
+      <button type="button" class="btn-icon" id="btn-tutup-modal-produk" aria-label="Tutup">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <form id="form-produk">
+      <div class="field-group">
+        <label>Foto Produk</label>
+        <img id="preview-foto-produk" class="preview-gambar" src="" alt="Preview produk" />
+        <input type="file" id="input-foto-produk" accept="image/*" />
+      </div>
+
+      <div class="field-group">
+        <label for="input-nama-produk">Nama Produk</label>
+        <input type="text" id="input-nama-produk" required />
+      </div>
+
+      <div class="grid-2-kolom">
+        <div class="field-group">
+          <label for="input-kategori-produk">Kategori</label>
+          <select id="input-kategori-produk">
+            <option value="Rokok">Rokok</option>
+            <option value="Makanan">Makanan &amp; Camilan</option>
+            <option value="Fashion">Fashion</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="input-origin-produk">Asal</label>
+          <select id="input-origin-produk">
+            <option value="Indonesia">Indonesia</option>
+            <option value="Lokal">Lokal</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="input-subkategori-produk">Sub-kategori (opsional)</label>
+        <input type="text" id="input-subkategori-produk" placeholder="Contoh: Impor Indonesia" />
+      </div>
+
+      <div class="grid-2-kolom">
+        <div class="field-group">
+          <label for="input-stok-produk">Jumlah Stok</label>
+          <input type="number" id="input-stok-produk" min="0" required />
+        </div>
+        <div class="field-group">
+          <label for="input-modal-produk">Harga Modal (LKR)</label>
+          <input type="number" id="input-modal-produk" min="0" required />
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="input-jual-produk">Harga Jual (LKR)</label>
+        <input type="number" id="input-jual-produk" min="0" required />
+      </div>
+
+      <div class="field-group toggle-sederhana">
+        <input type="checkbox" id="input-tampil-produk" checked style="width:18px;height:18px;" />
+        <label for="input-tampil-produk" style="margin:0;">Tampilkan produk di storefront</label>
+      </div>
+
+      <button type="submit" class="btn-primer">Simpan Produk</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MODAL: TAMBAH/UBAH FAQ ================= -->
+<div class="overlay-form-modal" id="overlay-modal-faq">
+  <div class="kartu-form-modal">
+    <div class="kartu-form-modal__header">
+      <h2 id="judul-modal-faq">Tambah FAQ</h2>
+      <button type="button" class="btn-icon" id="btn-tutup-modal-faq" aria-label="Tutup">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <form id="form-faq">
+      <div class="field-group">
+        <label for="input-pertanyaan-faq">Pertanyaan</label>
+        <input type="text" id="input-pertanyaan-faq" required />
+      </div>
+      <div class="field-group">
+        <label for="input-jawaban-faq">Jawaban</label>
+        <textarea id="input-jawaban-faq" required></textarea>
+      </div>
+      <div class="field-group">
+        <label for="input-kata-kunci-faq">Kata Kunci (pisahkan dengan koma)</label>
+        <input type="text" id="input-kata-kunci-faq" placeholder="beli,pakaian,fashion" />
+      </div>
+      <button type="submit" class="btn-primer">Simpan FAQ</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ LIBRARIES (CDN, VANILLA — TANPA REACT) ============ -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<!-- ============ APLIKASI ADMIN (ES MODULES, VANILLA JS) ============ -->
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>
